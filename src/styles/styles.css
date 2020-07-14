@@ -1,5 +1,9 @@
 :root {
   --header-height: 70px;
+  --pokemon-color-info: #87ADDE;
+  --primary-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --primary-shadow-inset: 0 1px 3px rgba(0, 0, 0, 0.12) inset, 0 1px 2px rgba(0, 0, 0, 0.24) inset;
+  --text-color: white;
 }
 
 header {
@@ -12,16 +16,45 @@ header {
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
+  box-shadow: var(--primary-shadow);
+}
+
+.pokemon {
+  background-color: burlywood;
+  border-radius: 3px;
+  color: white;
+}
+
+.pokemon a {
+  color: white;
+}
+
+.pokemon-detail{
+  box-shadow: var(--primary-shadow);
+}
+
+.pokemon-image {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 10px;
+  box-shadow: var(--primary-shadow);
+}
+.pokemon-image img {
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .pokemon-card {
-  color: whitesmoke;
   text-align: center;
-  background-color: burlywood;
   margin-bottom: 20px;
-  border-radius: 3px;
   height: 250px;
   overflow: hidden;
+  box-shadow: var(--primary-shadow);
 }
 
 .pokemon-name {
@@ -31,12 +64,13 @@ header {
 
 .type{
   padding: 5px;
-  width: 25%;
+  width: 40%;
   text-align: center;
   font-weight: bold;
   text-transform: capitalize;
   margin: 3px;
   border-radius: 2px;
+  box-shadow: var(--primary-shadow);
 }
 
 .grass {
@@ -109,4 +143,46 @@ header {
 
 .dark {
   background-color: #49392F;
+}
+
+.pokemon-data-label {
+  background-color: var(--pokemon-color-info);
+  padding: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  width: 20%;
+  text-align: center;
+  margin: 5px;
+}
+
+.data-pokemon {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  text-transform: capitalize;
+  box-shadow: var(--primary-shadow);
+}
+
+.stat-number {
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  
+}
+
+.badge-number {
+  background-color: white;
+  padding: 5px;
+  color: var(--pokemon-color-info);
+  margin: 7px;
+  border-radius: .25rem;
+  box-shadow: var(--primary-shadow-inset);
+}
+
+.pokemon-info {
+  margin: 5px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: var(--primary-shadow)
 }

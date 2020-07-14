@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import useFetchPokemon from '../hooks/useFetchPokemon';
+import useFetch from '../hooks/useFetch';
 import PokemonCard from './PokemonCard';
 import Loading from './Loading';
 
+import { baseURL } from '../helpers/urls';
+
 const PokemonList = React.memo(() => {
-  const [baseUrl, setBaseUrl] = useState('https://pokeapi.co/api/v2/pokemon/?limit=153');
-  const { loading, data } = useFetchPokemon(baseUrl);
+  const [baseUrl, setBaseUrl] = useState(`${baseURL()}?limit=153`);
+  const { loading, data } = useFetch(baseUrl);
   const { previous, next, results } = !!data && data;
 
   const nextUrl = () => !!next && setBaseUrl(next);

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useFetchPokemon from '../hooks/useFetchPokemon';
+import useFetch from '../hooks/useFetch';
 import Pokemon from './Pokemon';
 import Loading from './Loading';
 
 const PokemonCard = React.memo(({ url }) => {
-  const { loading, data } = useFetchPokemon(url);
+  const { loading, data } = useFetch(url);
 
   return (
-    <div className="pokemon-card">
+    <div className="pokemon pokemon-card">
       {
         loading
           ? <Loading extraClass="mt-5" />

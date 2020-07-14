@@ -1,23 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import PokemonType from './pokemon-detail/PokemonType';
+import PokemonImage from './pokemon-detail/PokemonImage';
 
 const Pokemon = React.memo(({ pokemon }) => {
-  const { name, sprites, types } = pokemon;
+  const {
+    name,
+    sprites,
+    types,
+    id,
+  } = pokemon;
+
   return (
     <div className="pokemon">
       <figure className="figure">
-        <img src={sprites.front_default} alt={name} />
-        <figcaption className="pokemon-name">{name}</figcaption>
+        <Link to={() => `/pokemon/${id}`}>
+          <PokemonImage imageURl={sprites.front_default} pokemonName={name} />
+          <figcaption className="pokemon-name">{name}</figcaption>
+        </Link>
       </figure>
       <div className="types d-flex justify-content-center">
         {
-          types.map(({ type }) => {
-            const className = `type ${type.name}`;
-            return <div key={type.name} className={className}>{type.name}</div>;
-          })
+          types.map(
+            ({ type }) => (
+              <PokemonType key={type.name} type={type} />
+            ),
+          )
         }
       </div>
-    </div >
+    </div>
   );
 });
 
