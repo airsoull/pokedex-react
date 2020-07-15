@@ -16,13 +16,13 @@ const Pokemon = React.memo(({ pokemon }) => {
     <div className="pokemon">
       <figure className="figure">
         <Link to={() => `/pokemon/${id}`}>
-          <PokemonImage imageURl={sprites.front_default} pokemonName={name} />
+          {!!sprites && <PokemonImage imageURl={sprites.front_default} pokemonName={name} />}
           <figcaption className="pokemon-name">{name}</figcaption>
         </Link>
       </figure>
       <div className="types d-flex justify-content-center">
         {
-          types.map(
+          !!types && types.map(
             ({ type }) => (
               <PokemonType key={type.name} type={type} />
             ),

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import useFetch from '../hooks/useFetch';
 import PokemonCard from './PokemonCard';
 import Loading from './Loading';
 
 import { baseURL } from '../helpers/urls';
+import useFetchAllPokemon from '../hooks/useFetchAllPokemon';
 
 const PokemonList = React.memo(() => {
-  const [baseUrl, setBaseUrl] = useState(`${baseURL()}?limit=153`);
-  const { loading, data } = useFetch(baseUrl);
+  const [baseUrl, setBaseUrl] = useState(`${baseURL()}?limit=21`);
+  const [loading, data] = useFetchAllPokemon(baseUrl);
   const { previous, next, results } = !!data && data;
 
   const nextUrl = () => !!next && setBaseUrl(next);
@@ -36,11 +36,11 @@ const PokemonList = React.memo(() => {
           loading
             ? <Loading />
             : results.map(
-              ({ name, url }) => (
-                <div className="col-sm-12 col-md-6 col-lg-4" key={name}>
+              (pokemon) => (
+                <div className="col-sm-12 col-md-6 col-lg-4" key={pokemon.id}>
                   <PokemonCard
-                    key={name}
-                    url={url}
+                    key={pokemon.id}
+                    pokemon={pokemon}
                   />
                 </div>
               ),

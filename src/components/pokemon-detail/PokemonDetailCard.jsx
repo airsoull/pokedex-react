@@ -58,11 +58,10 @@ const PokemonDetailCard = ({ pokemon }) => {
 
       {/* stats */}
       <div className="row pokemon-info mt-3">
-
         {
           stats.map(
             (s) => (
-              <div className="col-sm-12 col-md-6">
+              <div className="col-sm-12 col-md-6" key={s.stat.name}>
                 <PokemonStat key={s.stat.name} stat={s} />
               </div>
             ),
